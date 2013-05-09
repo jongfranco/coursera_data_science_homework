@@ -29,13 +29,13 @@ def main():
     if tweet_json.get('text'):
       tweet_text = tweet_json['text'].encode('utf8').split()
       for word in tweet_text:
-        # only read alphanumeric words
-        if re.match("^[A-Za-z0-9_-]*$", word):
+        # only read alphanumeric words and mentions (e.g., "@dpmehta02")
+        if re.match("^@|[@A-Za-z0-9_-]*$", word):
           score += scores.get(word, 0)
       tweet_sentiments[line] = score
       for everyword in tweet_text:
-      	# only read alphanumeric words
-        if re.match("^[A-Za-z0-9_-]*$", everyword):
+      	# only read alphanumeric words and mentions (e.g., "@dpmehta02")
+        if re.match("^@|[@A-Za-z0-9_-]*$", everyword):
       		word_sentiments[everyword] = tweet_sentiments[line]
 
   # empty dict for storing non-AFINN word sentiments
@@ -49,8 +49,8 @@ def main():
     if tweet_json.get('text'):
       tweet_text = tweet_json['text'].encode('utf8').split()
       for word in tweet_text:
-        # only read alphanumeric words
-        if re.match("^[A-Za-z0-9_-]*$", word):
+        # only read alphanumeric words and mentions (e.g., "@dpmehta02")
+        if re.match("^@|[A-Za-z0-9_-]*$", word):
           if not scores.get(word):
           		unscored_words[word] = word_sentiments[word]
 
