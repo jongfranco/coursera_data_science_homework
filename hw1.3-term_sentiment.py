@@ -5,6 +5,8 @@
 # Requires sentiment file (AFINN-111.txt: https://code.google.com/p/fb-moody/source/browse/trunk/AFINN/AFINN-111.txt?spec=svn2&r=2)
 # USAGE: $ python term_sentiment.py <sentiment_file> <tweet_file>
 
+# This script works, but should be refactored
+
 import sys
 import json
 import re
