@@ -6,7 +6,7 @@ mr = MapReduce.MapReduce()
 def mapper(record):
     # key: document identifier
     # value: document contents
-    # used words
+    # used words to prevent dupes
     used = []
 
     key = record[0]
