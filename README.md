@@ -1,2 +1,1 @@
-Programming assignments for Coursera's Data Science course (Python, SQL)
-Dev Mehta @dpmehta02
+My homework assignments from Coursera's Data Science course.
