@@ -1,4 +1,4 @@
-./config/twitter_creentials.py
+config/twitter_credentials.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
