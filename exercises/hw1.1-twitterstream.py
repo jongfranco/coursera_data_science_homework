@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""
-Author: Dev Mehta / dpmehta02@gmail.com
-Description: ...
-Usage: python scriptName.py
+"""Author: Dev Mehta / dpmehta02@gmail.com
+Description: Hit the Twitter API for sample tweets. Requires updating
+authentication credentials
+Usage: python hw1.1-twitterstream.py
 """
 
 import oauth2 as oauth
@@ -20,9 +20,8 @@ def fetch_samples():
 
 
 def twitterreq(url, method, parameters):
-    """
-    Construct, sign, and open a twitter request
-    using the hard-coded credentials above.
+    """Construct, sign, and open a twitter request using the hard-coded
+    credentials above.
     """
 
     ACCESS_TOKEN_KEY = "25025967-kUGYUGg6VJuNipO1yhbYGn5Sq4sx4Gz9tt67T1nSF"
