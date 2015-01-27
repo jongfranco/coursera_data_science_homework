@@ -10,6 +10,9 @@ Usage: python hw1.1-twitterstream.py
 import oauth2 as oauth
 import urllib2 as urllib
 
+from config.credentials import ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET,
+                                CONSUMER_KEY, CONSUMER_SECRET
+
 
 def fetch_samples():
     url = "https://stream.twitter.com/1/statuses/sample.json"
@@ -23,11 +26,6 @@ def twitterreq(url, method, parameters):
     """Construct, sign, and open a twitter request using the hard-coded
     credentials above.
     """
-
-    ACCESS_TOKEN_KEY = "25025967-kUGYUGg6VJuNipO1yhbYGn5Sq4sx4Gz9tt67T1nSF"
-    ACCESS_TOKEN_SECRET = "FKfGJbBEXy5gBgCEc4H5xTs9VIDK0nLiO7wuzbUrM8"
-    CONSUMER_KEY = "pCnW2Myj1reb1iRrCiIqg"
-    CONSUMER_SECRET = "MdIeFLCdeZQJvQZRnczLy0UiChZ6JeCR4LERpXyPt34"
 
     oauth_token = oauth.Token(key=ACCESS_TOKEN_KEY, secret=ACCESS_TOKEN_SECRET)
     oauth_consumer = oauth.Consumer(key=CONSUMER_KEY, secret=CONSUMER_SECRET)
