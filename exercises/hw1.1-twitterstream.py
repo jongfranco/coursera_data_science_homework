@@ -3,8 +3,7 @@
 
 """Author: Dev Mehta / dpmehta02@gmail.com
 Description: Hit the Twitter API for sample tweets.
-
-Usage: Updaten config/credentials.py with the appropriate access credentials,
+Usage: Update config/credentials.py with the appropriate access credentials,
 then run: $ python hw1.1-twitterstream.py
 """
 
