@@ -1,4 +1,5 @@
 exercises/config/credentials.py
+exercises/helpers/tweets.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
