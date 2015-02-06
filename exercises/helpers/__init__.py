@@ -63,7 +63,7 @@ def load_sentiment_dict(sentiment_file):
 
 
 def print_sentiment_scores(scores, tweet_file):
-    """Prints to stdout a sentiment score for each tweet in a tweet file"""
+    """Prints to stdout a sentiment score for each tweet in a file"""
 
     for line in tweet_file:
         tweet_json = json.loads(line)
