@@ -41,8 +41,7 @@ def twitter_request(url, http_method, parameters):
         encoded_post_data = None
         url = req.to_url()
 
-    _debug_level = 0
-    opener = create_opener(_debug_level)
+    opener = create_opener(debug_level=0)
     response = opener.open(url, encoded_post_data)
 
     return response
