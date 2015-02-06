@@ -20,14 +20,12 @@ def create_opener(debug_level=0):
     return opener
 
 
-def twitter_request(url, method, parameters):
+def twitter_request(url, http_method, parameters):
     """Construct, sign, and open a twitter request."""
 
     oauth_token = oauth.Token(key=ACCESS_TOKEN_KEY, secret=ACCESS_TOKEN_SECRET)
     oauth_consumer = oauth.Consumer(key=CONSUMER_KEY, secret=CONSUMER_SECRET)
     signature_method_hmac_sha1 = oauth.SignatureMethod_HMAC_SHA1()
-
-    http_method = "GET"
 
     req = oauth.Request.from_consumer_and_token(oauth_consumer,
                                                 token=oauth_token,

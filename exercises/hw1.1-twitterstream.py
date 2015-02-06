@@ -11,7 +11,7 @@ def fetch_sample_tweets():
 
     response = twitter_request(
             url="https://stream.twitter.com/1/statuses/sample.json",
-            method="GET",
+            http_method="GET",
             parameters=[])
 
     for line in response:
