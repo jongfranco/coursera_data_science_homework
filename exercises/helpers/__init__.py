@@ -1,3 +1,6 @@
+import re
+import json
+
 import oauth2 as oauth
 import urllib2 as urllib
 
@@ -45,3 +48,31 @@ def twitter_request(url, method, parameters):
     response = opener.open(url, encoded_post_data)
 
     return response
+
+
+def load_sentiment_dict(sentiment_file):
+    """Create a sentiment:score dict from a tab-delimited
+    word:sentiment_score file.
+    """
+    with open(sentiment_file) as afinnfile:
+        scores = {}
+        for line in afinnfile:
+            term, score = line.split("\t")
+            scores[term] = int(score)
+
+    return scores
+
+
+def print_sentiment_scores(scores, tweet_file):
+    """Prints to stdout a sentiment score for each tweet in a tweet file"""
+    for line in tweet_file:
+        tweet_json = json.loads(line)
+        score = 0
+
+        if tweet_json.get('text'):
+            tweet_text = tweet_json['text'].encode('utf8').split()
+            for word in tweet_text:
+                # only read alphanumeric words (NEED TO LOWERCASE?)
+                if re.match("^[A-Za-z0-9_-]*$", word):
+                    score += scores.get(word, 0)
+            print float(score)

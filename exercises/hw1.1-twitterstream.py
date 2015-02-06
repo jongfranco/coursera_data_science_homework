@@ -10,12 +10,14 @@ then run: $ python hw1.1-twitterstream.py
 from helpers import twitter_request
 
 
-def fetch_samples():
-    url = "https://stream.twitter.com/1/statuses/sample.json"
-    parameters = []
-    response = twitter_request(url, "GET", parameters)
+def fetch_sample_tweets():
+    response = twitter_request(
+                url="https://stream.twitter.com/1/statuses/sample.json",
+                method="GET",
+                parameters=[])
+
     for line in response:
         print line.strip()
 
 if __name__ == '__main__':
-    fetch_samples()
+    fetch_sample_tweets()
