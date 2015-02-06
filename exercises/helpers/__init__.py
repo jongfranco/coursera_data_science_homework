@@ -13,6 +13,7 @@ def create_opener(debug_level=0):
 
     http_handler = urllib.HTTPHandler(debuglevel=debug_level)
     https_handler = urllib.HTTPSHandler(debuglevel=debug_level)
+
     opener = urllib.OpenerDirector()
     opener.add_handler(http_handler)
     opener.add_handler(https_handler)
@@ -51,6 +52,7 @@ def load_sentiment_dict(sentiment_file):
     """Create a sentiment:score dict from a tab-delimited
     word:sentiment_score file.
     """
+
     with open(sentiment_file) as afinnfile:
         scores = {}
         for line in afinnfile:
@@ -62,6 +64,7 @@ def load_sentiment_dict(sentiment_file):
 
 def print_sentiment_scores(scores, tweet_file):
     """Prints to stdout a sentiment score for each tweet in a tweet file"""
+
     for line in tweet_file:
         tweet_json = json.loads(line)
         score = 0
