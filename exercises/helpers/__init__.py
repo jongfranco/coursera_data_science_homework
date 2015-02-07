@@ -1,3 +1,5 @@
+# TODO: refactor
+
 import re
 import json
 
@@ -76,3 +78,50 @@ def print_sentiment_scores(scores, tweet_file):
                 if re.match("^[A-Za-z0-9_-]*$", word):
                     score += scores.get(word, 0)
             print float(score)
+
+
+def get_tweet_sentiments(scores, tweet_file):
+    tweet_sentiments = {}
+
+    for line in open(tweet_file):
+        score = 0
+        tweet_json = json.loads(line)
+
+        if tweet_json.get('text'):
+            tweet_text = tweet_json['text'].encode('utf8').split()
+            for word in tweet_text:
+                if re.match("^@|[@A-Za-z0-9_-]*$", word):
+                    score += scores.get(word, 0)
+                    # word_sentiments[word] = tweet_sentiments[line]
+            tweet_sentiments[line] = score
+
+    return tweet_sentiments
+
+
+def get_word_sentiments(tweet_sentiments, tweet_file):
+    word_sentiments = {}
+
+    for line in open(tweet_file):
+        tweet_json = json.loads(line)
+        if tweet_json.get('text'):
+            tweet_text = tweet_json['text'].encode('utf8').split()
+            for word in tweet_text:
+                if re.match("^@|[@A-Za-z0-9_-]*$", word):
+                    word_sentiments[word] = tweet_sentiments[line]
+
+    return word_sentiments
+
+
+def get_unscored_words(scores, word_sentiments, tweet_file):
+    unscored_words = {}
+
+    for line in open(tweet_file):
+        tweet_json = json.loads(line)
+        if tweet_json.get('text'):
+            tweet_text = tweet_json['text'].encode('utf8').split()
+            for word in tweet_text:
+                if re.match("^@|[@A-Za-z0-9_-]*$", word):
+                    if not scores.get(word):
+                        unscored_words[word] = word_sentiments[word]
+
+    return unscored_words
